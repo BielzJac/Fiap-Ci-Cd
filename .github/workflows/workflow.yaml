@@ -8,10 +8,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Atualizando para versão mais recente
 
       - name: Set up JDK 22
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4 # Atualizando para versão mais recente
         with:
           java-version: '22'
           distribution: 'adopt'
