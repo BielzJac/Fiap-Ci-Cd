@@ -1,11 +1,11 @@
 # Build Stage
-FROM maven:3.8.1-openjdk-21 AS build  # Usar JDK 21, que foi especificado no pipeline e no pom.xml
+FROM maven:3.9.3-eclipse-temurin-21 AS build  # Usando imagem que suporta Maven e JDK 21
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
 # Run Stage
-FROM openjdk:21-jre-slim  # Certificar que o JRE é da mesma versão do JDK utilizado na build
+FROM eclipse-temurin:21-jre  # Certificar que o JRE é da mesma versão do JDK utilizado na build
 
 # Informações do MySQL
 ENV SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/db_gestaoresiduos?createDatabaseIfNotExist=true
