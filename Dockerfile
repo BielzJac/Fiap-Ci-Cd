@@ -1,11 +1,11 @@
 # Build Stage
-FROM maven:3.8.1-openjdk-22 AS build  # Alterado para JDK 22
+FROM maven:3.8.1-openjdk-21 AS build  # Usar JDK 21, que foi especificado no pipeline e no pom.xml
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
 # Run Stage
-FROM openjdk:22-jre-slim  # Alterado para JDK 21
+FROM openjdk:21-jre-slim  # Certificar que o JRE é da mesma versão do JDK utilizado na build
 
 # Informações do MySQL
 ENV SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/db_gestaoresiduos?createDatabaseIfNotExist=true
