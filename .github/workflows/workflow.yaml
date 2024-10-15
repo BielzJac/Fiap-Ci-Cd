@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v4 # Atualizando para versão mais recente
 
       - name: Set up JDK 22
-        uses: actions/setup-java@v4 # Atualizando para versão mais recente
+        uses: actions/setup-java@v4 # Alterado para JDK 22
         with:
           java-version: '22'
           distribution: 'adopt'
