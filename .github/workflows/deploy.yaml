@@ -1,0 +1,43 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout do repositório
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Login no Docker Hub
+      - name: Login no Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # Build da imagem Docker
+      - name: Build Docker image
+        run: docker build -t myapp:latest .
+
+      # Push da imagem para o Docker Hub
+      - name: Push Docker image to Docker Hub
+        run: docker push myapp:latest
+
+      # Login no Azure
+      - name: Login no Azure
+        uses: azure/login@v1
+        with:
+          publish-profile: ${{ secrets.AZURE_PROFILE }}
+
+      # Deploy no Azure App Service
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'gestao-de-residuos'
+          images: 'myapp:latest'
