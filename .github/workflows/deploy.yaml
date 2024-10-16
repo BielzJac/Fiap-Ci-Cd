@@ -21,19 +21,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # Baixar a imagem do Docker Hub (se ela já existir lá)
-      - name: Pull existing Docker image
-        run: docker pull bielzjac/fiap-ci-cd:latest
-
       # Push da imagem para o Docker Hub
       - name: Push Docker image to Docker Hub
         run: docker push bielzjac/fiap-ci-cd:latest
 
-      # Login no Azure
+      # Login no Azure com Service Principal
       - name: Login no Azure
         uses: azure/login@v1
         with:
-          publish-profile: ${{ secrets.AZURE_PROFILE }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       # Deploy no Azure App Service
       - name: Deploy to Azure Web App
