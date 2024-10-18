@@ -19,11 +19,11 @@ public class Coleta {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "caminhao_id")
+    @JoinColumn(name = "caminhao_id", referencedColumnName = "id", nullable = false)
     private Caminhao caminhao;
 
     @ManyToOne
-    @JoinColumn(name = "recipiente_id")
+    @JoinColumn(name = "recipiente_id", referencedColumnName = "id", nullable = false)
     private Recipiente recipiente;
 
     @Column(name = "data")

@@ -18,9 +18,9 @@
     <description>Gestão de Resíduos para Cidades Inteligentes</description>
 
     <properties>
-        <java.version>21</java.version>  <!-- Alterado para JDK 21 -->
-        <maven.compiler.source>21</maven.compiler.source>  <!-- Alterado para JDK 21 -->
-        <maven.compiler.target>21</maven.compiler.target>  <!-- Alterado para JDK 21 -->
+        <java.version>22</java.version>  <!-- Atualizado para JDK 22 -->
+        <maven.compiler.source>22</maven.compiler.source>  <!-- Atualizado para JDK 22 -->
+        <maven.compiler.target>22</maven.compiler.target>  <!-- Atualizado para JDK 22 -->
     </properties>
 
     <dependencies>
@@ -84,6 +84,7 @@
         </dependency>
     </dependencies>
 
+
     <build>
         <plugins>
             <!-- Plugin do Spring Boot -->
@@ -91,23 +92,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
                 </configuration>
             </plugin>
 
-            <!-- Plugin do Maven para compilar com suporte ao JDK 21 -->
+            <!-- Plugin do Maven para compilar com suporte ao JDK 22 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <source>21</source>
-                    <target>21</target>
+                    <source>22</source>
+                    <target>22</target>
                 </configuration>
             </plugin>
         </plugins>
